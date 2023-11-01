@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using TODOApp.Data;
+
 namespace TODOApp.Web
 {
     public class Program
@@ -6,9 +9,17 @@ namespace TODOApp.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            //App settings
+            builder.Services.AddOptions();
+            builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+            var appSettings = builder.Configuration.GetSection("AppSettings").Get<AppSettings>();
+
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            //Add database context
+            builder.Services.AddDbContext<TODOAppDbContext>(db => db.UseSqlServer(appSettings.ConnectionStrings.TODOAppDbConnection));
 
             var app = builder.Build();
 
