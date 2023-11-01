@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TODOApp.Data;
+using TODOApp.Data.Repositories.Implementations;
+using TODOApp.Data.Repositories.Interfaces;
 
 namespace TODOApp.Web
 {
@@ -20,6 +22,9 @@ namespace TODOApp.Web
 
             //Add database context
             builder.Services.AddDbContext<TODOAppDbContext>(db => db.UseSqlServer(appSettings.ConnectionStrings.TODOAppDbConnection));
+
+            //DI registry
+            builder.Services.AddScoped<IWorkItemRepository, WorkItemRepository>();
 
             var app = builder.Build();
 
