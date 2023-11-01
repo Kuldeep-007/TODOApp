@@ -16,3 +16,34 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/*Id*/
+#td-main-box {
+    box-shadow: 1px 1px 25px 10px #eee;
+    height: 100vh;
+}
+
+#td-main-bar {
+    box-shadow: 1px 1px 25px 10px #eee;
+    height: 75px !important;
+    margin-left: -10px !important;
+    margin-right: -10px;
+}
+
+#td-main-logo {
+    height: 40px;
+    width: auto;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#td-task-button {
+    margin-top: 20px;
+    box-shadow: 1px 1px 5px 1px #bbb;
+    font-weight:bold;
+}
+
+#td-task-button:hover {
+    box-shadow: 1px 1px 5px 1px #aaa;
+    background-color: #f4f4f4;
+}

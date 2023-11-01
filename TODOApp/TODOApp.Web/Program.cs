@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using TODOApp.Data;
+using TODOApp.Data.Repositories.Implementations;
+using TODOApp.Data.Repositories.Interfaces;
+
 namespace TODOApp.Web
 {
     public class Program
@@ -9,6 +14,12 @@ namespace TODOApp.Web
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            //Add database context
+            builder.Services.AddDbContext<TODOAppDbContext>(db => db.UseSqlServer(appSettings.ConnectionStrings.TODOAppDbConnection));
+
+            //DI registry
+            builder.Services.AddScoped<IWorkItemRepository, WorkItemRepository>();
 
             var app = builder.Build();
 
