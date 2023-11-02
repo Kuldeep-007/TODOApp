@@ -1,7 +1,7 @@
 About the project
 ------------------------------------------------------
 This is a TODO app which can help you to record your daily tasks. 
-You can complete a task or delete a task if its not required. You cna also re-schedule a task by editing a task.
+You can complete a task or delete a task if its not required. You can also re-schedule a task by editing a task.
 
 Built With
 ------------------------------------------------------
