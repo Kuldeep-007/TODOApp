@@ -1,6 +1,6 @@
-﻿namespace TODOApp.Data.Entity
+﻿namespace TODOApp.Web.Models
 {
-    public class WorkItem : Entity
+    public class WorkItemModel
     {
         public int Id { get; set; }
         public string Subject { get; set; }
