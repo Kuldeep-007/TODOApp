@@ -17,6 +17,17 @@ body {
   margin-bottom: 60px;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
 /*Id*/
 #td-main-box {
     box-shadow: 1px 1px 25px 10px #eee;
@@ -28,6 +39,7 @@ body {
     height: 75px !important;
     margin-left: -10px !important;
     margin-right: -10px;
+    background-color: #fff4f4;
 }
 
 #td-main-logo {
@@ -46,4 +58,10 @@ body {
 #td-task-button:hover {
     box-shadow: 1px 1px 5px 1px #aaa;
     background-color: #f4f4f4;
+}
+
+/*class*/
+
+.td-form-input {
+    background-color: #fff4f4 !important;
 }

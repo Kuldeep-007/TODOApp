@@ -1,0 +1,90 @@
+﻿<div id="td-work-item" style="display:none;">
+    <br/>
+    <p><b>ADD NEW TASK</b></p>
+    <form id="td-work-item-form" class="form-horizontal">
+
+        <input class="form-control td-form-input" id="td-item-id" type="text" style="display:none;"/>
+
+        <div class="form-group">
+            <label class="control-label col-sm-6">Subject</label>
+            <div class="input-group">
+                <input class="form-control td-form-input" id="td-subject" type="text" />
+            </div>
+            <br/>
+            <div class="col-sm-5">
+                <label class="control-label col-sm-6">Schedule On</label>
+                <div class="input-group date">
+                    <input class="form-control td-form-input" id="td-date" type="date" />
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                <label class="control-label col-sm-6">Description</label>
+                <div class="input-group">
+                    <textarea class="form-control td-form-input" id="td-description" rows="5"></textarea>
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                <input type="button" id="td-cancel-task" value="Cancel" class="btn btn-danger" />
+                <input type="button" id="td-submit-task" value="Add Task" class="btn btn-success" />
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+$(document).ready(function () {
+
+        $('#td-submit-task').click(function () {
+
+            var subject = $('#td-subject').val();
+            var date = $('#td-date').val();
+            var description = $('#td-description').val();
+            var id = $('#td-item-id').val();
+
+            if (subject.length == 0 || date.length == 0 || description.length == 0){
+                alert('Please check the values entered. All fields are required');
+                return;
+            }
+
+            $.ajax({
+                url: 'Home/AddOrUpdateWorkItem',
+                type: 'POST',
+                timeout: '12000',
+                datatype: 'json',
+                data: {
+                    id: id,
+                    subject: subject,
+                    scheduledOn: date,
+                    description: description
+                },
+                success: function(){
+                    window.location.reload();
+                },
+                completed: function(){
+                    $('#td-submit-task').val("Add Task");
+                    window.location.reload();
+                }
+            });
+        });
+
+        $('#td-task-button').click(function(){
+            $('#td-work-item').show();
+            $('#td-main-items').hide();
+        });
+
+        $('#td-cancel-task').click(function () {
+
+            $('#td-item-id, #td-subject, #td-date, #td-description').val('');
+            $('#td-submit-task').val("Add Task");
+            $('#td-work-item').hide();
+            $('#td-main-items').show();
+        });
+
+        $('#DeleteTask').click(function (id) {
+            alert(id);
+        });
+        
+});
+
+</script>
